@@ -10,8 +10,8 @@ function App() {
       <ToastContainer
         autoClose={1000}
         toastStyle={{
-          background: "var(--grey2)",
-          color: "var(--grey0)",
+          background: "gray",
+          color: "white",
         }}
       />
     </>
