@@ -4,10 +4,11 @@ export const ContainerModal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
-  min-height: 80%;
   background-color: rgba(0, 0, 0, 0.5);
 
   .modal {
@@ -71,5 +72,12 @@ export const ContainerModal = styled.div`
         }
       }
     }
+  }
+
+  .divBtns {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem auto;
   }
 `;

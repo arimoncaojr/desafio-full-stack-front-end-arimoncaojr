@@ -169,6 +169,11 @@ export const ContactItem = styled.li`
   padding: 1rem;
   border-bottom: 1px solid #e9ecef;
   gap: 1rem;
+  cursor: pointer;
+
+  :hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 `;
 
 export const LinkStyle = styled(Link)`

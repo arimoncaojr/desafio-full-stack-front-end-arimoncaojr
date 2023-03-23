@@ -1,6 +1,8 @@
 import { AuthContext, IContactsInfo } from "../../contexts/AuthContext";
 import { ModalEditUserContext } from "../../contexts/ModalEditUserContext";
+import { ModalEditContactContext } from "../../contexts/ModalEditContactContext";
 import { ModalEditUser } from "../../components/ModalEditUser";
+import { ModalEditContact } from "../../components/ModalEditContact";
 import { useContext } from "react";
 import { schema } from "../../lib/yupCreateContact";
 import { useForm } from "react-hook-form";
@@ -24,12 +26,31 @@ export const Dashboard = () => {
     useContext(AuthContext);
   const { showModalEditUser, setShowModalEditUser } =
     useContext(ModalEditUserContext);
+  const {
+    showModalEditContact,
+    setShowModalEditContact,
+    setIdContact,
+    setFullNameContact,
+    setEmailContact,
+    setTelephoneContact,
+  } = useContext(ModalEditContactContext);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IContactsInfo>({ resolver: yupResolver(schema) });
+
+  function btnModalEditContact(
+    fullName: string,
+    email: string,
+    telephone: string
+  ) {
+    setFullNameContact(fullName);
+    setEmailContact(email);
+    setTelephoneContact(telephone);
+    setShowModalEditContact(true);
+  }
 
   return (
     <>
@@ -97,7 +118,17 @@ export const Dashboard = () => {
                 <ContactsList>
                   {userInfo.contacts.length > 0 ? (
                     userInfo.contacts.map((element) => (
-                      <ContactItem key={element.id}>
+                      <ContactItem
+                        key={element.id}
+                        onClick={() => {
+                          btnModalEditContact(
+                            element.fullName,
+                            element.email,
+                            element.telephone
+                          );
+                          setIdContact(element.id);
+                        }}
+                      >
                         <div>
                           <Span>Nome Completo:</Span> {element.fullName}
                         </div>
@@ -126,6 +157,7 @@ export const Dashboard = () => {
             </button>
             {showModalEditUser && <ModalEditUser />}
           </DashboardContainer>
+          {showModalEditContact && <ModalEditContact />}
         </Container>
       ) : (
         <Navigate to="/" replace />
