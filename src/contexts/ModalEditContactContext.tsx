@@ -14,7 +14,6 @@ export interface IModalContactEdit {
 
 interface IModalEditContactContext {
   showModalEditContact: boolean;
-  idContact: string;
   fullNameContact: string;
   emailContact: string;
   telephoneContact: string;
