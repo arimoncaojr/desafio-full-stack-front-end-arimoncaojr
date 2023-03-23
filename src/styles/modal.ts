@@ -4,22 +4,23 @@ export const ContainerModal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  width: 50%;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
   min-height: 80%;
   background-color: rgba(0, 0, 0, 0.5);
 
   .modal {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 25%;
     background-color: white;
     border-radius: 2px;
-    padding-bottom: 20px;
+    padding: 20px;
     max-width: 100%;
 
     @media (max-width: 768px) {
-      width: 100%;
+      width: 50%;
     }
 
     .closeModalRegister {

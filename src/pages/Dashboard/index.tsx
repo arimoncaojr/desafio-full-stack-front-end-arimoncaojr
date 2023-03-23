@@ -1,4 +1,6 @@
 import { AuthContext, IContactsInfo } from "../../contexts/AuthContext";
+import { ModalEditUserContext } from "../../contexts/ModalEditUserContext";
+import { ModalEditUser } from "../../components/ModalEditUser";
 import { useContext } from "react";
 import { schema } from "../../lib/yupCreateContact";
 import { useForm } from "react-hook-form";
@@ -6,7 +8,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
-  TitlePage,
   Form,
   Label,
   Span,
@@ -19,7 +20,10 @@ import {
 } from "../../styles/dashboard";
 
 export const Dashboard = () => {
-  const { userInfo, token, userId, registerContact } = useContext(AuthContext);
+  const { userInfo, token, userId, registerContact, deleteUser } =
+    useContext(AuthContext);
+  const { showModalEditUser, setShowModalEditUser } =
+    useContext(ModalEditUserContext);
 
   const {
     register,
@@ -111,6 +115,16 @@ export const Dashboard = () => {
                 </ContactsList>
               )}
             </ContactsSection>
+            <button
+              className="btnEnd"
+              onClick={() => setShowModalEditUser(true)}
+            >
+              Atualizar Cadastro
+            </button>
+            <button className="btnEnd" onClick={() => deleteUser()}>
+              Deletar Conta
+            </button>
+            {showModalEditUser && <ModalEditUser />}
           </DashboardContainer>
         </Container>
       ) : (

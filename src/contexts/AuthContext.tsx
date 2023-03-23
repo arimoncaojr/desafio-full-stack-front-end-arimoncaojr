@@ -44,6 +44,7 @@ interface IAuthContext {
   userId: string | null;
   login: (user: ILogin) => void;
   signUp: (user: ISignUp) => void;
+  deleteUser: () => void;
   registerContact: (contact: IContactsInfo) => void;
   showModalRegister: boolean;
   setShowModalRegister: React.Dispatch<React.SetStateAction<boolean>>;
@@ -118,6 +119,16 @@ export const AuthProvider = ({ children }: IAuthContextProps) => {
         });
   }, [token, navigate, userInfo.contacts, userId]);
 
+  function deleteUser() {
+    Api.delete(`/users/${userId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    }).then(() => {
+      window.localStorage.clear();
+      toast.success("Sua conta foi deletada com sucesso!");
+      navigate("/login");
+    });
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -129,6 +140,7 @@ export const AuthProvider = ({ children }: IAuthContextProps) => {
         registerContact,
         setShowModalRegister,
         showModalRegister,
+        deleteUser,
       }}
     >
       {children}

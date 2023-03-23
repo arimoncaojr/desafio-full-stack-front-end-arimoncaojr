@@ -58,6 +58,7 @@ export const Form = styled.form`
     border: 2px solid #f1e8e8;
     border-radius: 4px;
     width: 100%;
+    height: 10%;
   }
 
   button {

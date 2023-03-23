@@ -15,6 +15,24 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   background-color: black;
+
+  .btnEnd {
+    background-color: black;
+    color: white;
+    border-radius: 2px;
+    border: 2px solid transparent;
+    margin-left: 5rem;
+    height: 5%;
+    @media (max-width: 768px) {
+      margin-left: 0;
+      margin-bottom: 0.2rem;
+    }
+
+    :hover {
+      background-color: gray;
+      color: black;
+    }
+  }
 `;
 
 export const TitlePage = styled.h1`
@@ -61,6 +79,7 @@ export const Form = styled.form`
     border: 2px solid #f1e8e8;
     border-radius: 4px;
     width: 100%;
+    height: 20%;
   }
 
   button {
@@ -69,6 +88,7 @@ export const Form = styled.form`
     border-radius: 2px;
     border: 2px solid transparent;
     margin-bottom: 0.5rem;
+    height: 10%;
 
     @media (max-width: 768px) {
       width: 80%;
@@ -96,14 +116,16 @@ export const DashboardContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
+  flex-wrap: wrap;
   gap: 2rem;
   max-width: 100%;
   width: 100%;
-  height: 100vh;
+  min-height: 100%;
   background-color: #f8f9fa;
 
   @media (max-width: 768px) {
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
   }
 `;
@@ -120,7 +142,7 @@ export const ContactsSection = styled.section`
   padding: 1rem;
   margin-top: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-height: 54%;
+  height: 56%;
 
   @media (max-width: 768px) {
     width: 60%;
@@ -155,7 +177,7 @@ export const LinkStyle = styled(Link)`
   border-radius: 2px;
   border: 2px solid transparent;
   text-decoration: none;
-  margin-top: 1.5rem;
+  margin-top: 4rem;
   @media (max-width: 768px) {
     margin-top: 3rem;
   }
