@@ -11,5 +11,11 @@ export const schema = yup.object({
       "Senha com no mínimo 8 caracteres. Necessário ter letras, números e ao menos um símbolo"
     ),
   confirmPass: yup.string().oneOf([yup.ref("password")], "Senha não é igual"),
-  telephone: yup.string().required("Telefone não preenchido"),
+  telephone: yup
+    .string()
+    .required("Telefone não preenchido")
+    .matches(
+      /^[0-9]{11}$/,
+      "Telefone deve conter apenas números e exatamente 11 caracteres"
+    ),
 });
