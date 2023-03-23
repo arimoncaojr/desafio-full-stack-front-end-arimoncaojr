@@ -12,7 +12,20 @@ export interface IModalContactEdit {
   telephone?: string;
 }
 
-interface IModalEditContactContext {}
+interface IModalEditContactContext {
+  showModalEditContact: boolean;
+  idContact: string;
+  fullNameContact: string;
+  emailContact: string;
+  telephoneContact: string;
+  setShowModalEditContact: React.Dispatch<React.SetStateAction<boolean>>;
+  setIdContact: React.Dispatch<React.SetStateAction<string>>;
+  setFullNameContact: React.Dispatch<React.SetStateAction<string>>;
+  setEmailContact: React.Dispatch<React.SetStateAction<string>>;
+  setTelephoneContact: React.Dispatch<React.SetStateAction<string>>;
+  editContact: (newInfos: IModalContactEdit) => void;
+  deleteContact: () => void;
+}
 
 export const ModalEditContactContext = createContext<IModalEditContactContext>(
   {} as IModalEditContactContext

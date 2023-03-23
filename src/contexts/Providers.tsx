@@ -1,5 +1,6 @@
 import { AuthProvider } from "./AuthContext";
 import { ModalEditUserProvider } from "./ModalEditUserContext";
+import { ModalEditContactProvider } from "./ModalEditContactContext";
 
 interface IProvidersProps {
   children: React.ReactNode;
@@ -8,7 +9,9 @@ interface IProvidersProps {
 export const Providers = ({ children }: IProvidersProps) => {
   return (
     <AuthProvider>
-      <ModalEditUserProvider>{children}</ModalEditUserProvider>
+      <ModalEditContactProvider>
+        <ModalEditUserProvider>{children}</ModalEditUserProvider>
+      </ModalEditContactProvider>
     </AuthProvider>
   );
 };
